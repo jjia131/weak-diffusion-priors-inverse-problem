@@ -1,0 +1,18 @@
+measurement:
+  operator:
+    name: inpainting
+  mask_opt:
+    mask_type: random
+    mask_prob_range: [0.3, 0.3]
+    image_size: 256
+  # mask_opt:
+  #   mask_type: box
+  #   mask_prob_range: [0.6, 0.6]
+  #   image_size: 256
+  noise:
+    name: gaussian
+    sigma: 0.01
+
+# Algorithm parameters for DPS
+dps_algo:
+  scale: 0.5

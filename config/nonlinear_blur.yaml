@@ -1,0 +1,13 @@
+measurement:
+  operator:
+    name: nonlinear_blur
+    opt_yml_path: ./bkse/options/generate_blur/default.yml
+
+  noise: 
+    name: gaussian
+    sigma: 0.01
+
+
+# Algorithm parameters for DPS
+dps_algo:
+  scale: 0.3

@@ -1,0 +1,12 @@
+measurement:
+  operator:
+    name: super_resolution
+    in_shape: [3, 256, 256]
+    scale_factor: 4
+  noise:
+    name: gaussian
+    sigma: 0.01
+
+# Algorithm parameters for DPS
+dps_algo:
+  scale: 0.3
