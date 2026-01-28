@@ -2,7 +2,7 @@
 
 ![Process Overview](figures/process.jpg)
 
-## 📦 Environment Setup
+## Environment Setup
 
 Create the Python environment using:
 
@@ -24,7 +24,7 @@ Then follow the instructions in this issue to complete the import:
 https://github.com/DPS2022/diffusion-posterior-sampling/issues/1
 ```
 
-## 🔁 Cross-Domain Inverse Problem Solving
+## Cross-Domain Inverse Problem Solving
 
 This section evaluates how diffusion priors generalize across domains.
 
@@ -57,7 +57,7 @@ Run our method with cross-domain prior:
 python weak_recon.py --gpu 0 --task inpainting --dataset celeba --model church --start 0 --end 1
 ```
 
-## ⚖️ Comparison with Optimization-Based Methods
+## Comparison with Optimization-Based Methods
 
 We also compare against optimization-driven plug-and-play approaches.
 
@@ -74,7 +74,7 @@ python dmplug_recon.py --gpu 0 --task inpainting --dataset celeba --model celeba
 python weak_recon.py --gpu 0 --task inpainting --dataset celeba --model celeba --start 0 --end 1
 ```
 
-## 💥 Failure Mode Experiments
+## Failure Mode Experiments
 
 To evaluate robustness under extreme corruption, enable box-mask inpainting.
 
@@ -87,7 +87,7 @@ mask_opt:
   image_size: 256
 ```
 
-## 🧠 Latent Diffusion on ImageNet
+## Latent Diffusion on ImageNet
 
 We include experiments using latent diffusion models and DiT.
 
