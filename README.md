@@ -127,3 +127,29 @@ DiT-based reconstruction:
 ```bash
 python dit_recon.py --gpu 0 --task inpainting --dataset ImageNet --start 0 --end 3
 ```
+
+### Diffusers DPS Baseline Setup (Stable Diffusion)
+
+To run the latent diffusion DPS baseline, clone the following repository:
+
+```
+https://github.com/tongdaxu/diffusers-Diffusion-Posterior-Sampling.git
+```
+
+Then copy the following files/directories from this repo into the cloned repository:
+
+* `src/`
+* `util/`
+* `baseline_recon.py`
+
+After placing them in the cloned repo, run the baseline reconstruction script:
+
+```bash
+python baseline_recon.py \
+  --data ./ImageNet \
+  --out stable_recon/dsg/inpainting \
+  --scale 4.8 \
+  --algo dps \
+  --operator inpainting \
+  --nstep 500
+```

@@ -1,11 +1,10 @@
-# python main.py --data ./ImageNet --out stable_recon/dsg/inpainting --scale 4.8 --algo dps --operator inpainting --nstep 500 
-# python main.py --data ./ImageNet --out stable_recon/dsg/inpainting --scale 0.02 --algo dsg --operator inpainting --nstep 500 
-# python main.py --data ./ImageNet --out stable_recon/fdm/inpainting --scale 1.2 --algo fdm --operator inpainting --nstep 500 
+# python baseline_recon.py --data ./ImageNet --out stable_recon/dsg/inpainting --scale 4.8 --algo dps --operator inpainting --nstep 500 
+# python baseline_recon.py --data ./ImageNet --out stable_recon/dsg/inpainting --scale 0.02 --algo dsg --operator inpainting --nstep 500 
+# python baseline_recon.py --data ./ImageNet --out stable_recon/fdm/inpainting --scale 1.2 --algo fdm --operator inpainting --nstep 500 
 
-# python main.py --data ./ImageNet --out stable_recon/dps/gaussian --scale 4.8 --algo dps --operator gaussian --nstep 500 
-# python main.py --data ./ImageNet --out stable_recon/dsg/gaussian --scale 0.02 --algo dsg --operator gaussian --nstep 500 
-# python main.py --data ./ImageNet --out stable_recon/fdm/gaussian --scale 1.2 --algo fdm --operator gaussian --nstep 500 
-
+# python baseline_recon.py --data ./ImageNet --out stable_recon/dps/gaussian --scale 4.8 --algo dps --operator gaussian --nstep 500 
+# python baseline_recon.py --data ./ImageNet --out stable_recon/dsg/gaussian --scale 0.02 --algo dsg --operator gaussian --nstep 500 
+# python baseline_recon.py --data ./ImageNet --out stable_recon/fdm/gaussian --scale 1.2 --algo fdm --operator gaussian --nstep 500 
 import os
 import torch
 import random
