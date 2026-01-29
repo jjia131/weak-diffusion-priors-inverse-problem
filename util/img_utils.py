@@ -447,7 +447,7 @@ if __name__ == '__main__':
     from torch import nn
     import matplotlib.pyplot as plt
     device = 'cuda:0'
-    load_path = '/media/harry/tomo/FFHQ/256/test/00000.png'
+    load_path = '00000.png'
     img = torch.tensor(plt.imread(load_path)[:, :, :3])  #rgb
     img = torch.permute(img, (2, 0, 1)).view(1, 3, 256, 256).to(device)
 
