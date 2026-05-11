@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance">
+  <meta property="og:title" content="Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance" />
+  <meta property="og:description"
+    content="We show that diffusion models trained on mismatched data can still solve inverse problems effectively when measurements are highly informative, backed by Bayesian consistency theory." />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:title" content="Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance">
+  <meta name="twitter:description"
+    content="We show that diffusion models trained on mismatched data can still solve inverse problems effectively when measurements are highly informative.">
+  <meta name="twitter:image" content="images/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords"
+    content="diffusion models, inverse problems, weak priors, Bayesian consistency, image restoration, inpainting, deblurring, super-resolution">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.4/dist/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.4/dist/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <div class="top-cover-wrap">
+              <img src="images/cover.jpg" alt="Weak Diffusion Priors cover image" class="top-cover-image" />
+            </div>
+
+            <h1 class="title is-1 publication-title">
+              Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <b><a href="https://jjia131.github.io/" target="_blank">Jing Jia*<sup>1</sup></a></b>,
+              </span>
+              <span class="author-block">
+                <b><a
+                    href="https://statistics.rutgers.edu/people-pages/graduate-students/graduate-student-detail/167-fourth-year/624-wei-yuan"
+                    target="_blank">Wei Yuan*<sup>2</sup></a></b>,
+              </span>
+              <span class="author-block">
+                <b><a href="https://liusf15.github.io/" target="_blank">Sifan Liu<sup>3</sup></a></b>,
+              </span>
+              <span class="author-block">
+                <b><a href="https://liyueshen.engin.umich.edu/" target="_blank">Liyue Shen<sup>4</sup></a></b>,
+              </span>
+              <span class="author-block">
+                <b><a href="https://guanyangwang.github.io/" target="_blank">Guanyang Wang<sup>*2</sup></a></b>
+              </span>
+            </div>
+
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5em;">
+              <div><sup>1</sup>Department of Computer Science, Rutgers University</div>
+              <div><sup>2</sup>Department of Statistics, Rutgers University</div>
+              <div><sup>3</sup>Flatiron Institute</div>
+              <div><sup>4</sup>Department of EECS, University of Michigan</div>
+              <div><sup>*</sup>Equal contribution</div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- ArXiv link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2601.22443" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- repo link -->
+                <span class="link-block">
+                  <a href="https://github.com/jjia131/weak-diffusion-priors-inverse-problem" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+              <h2 class="title is-5"> ICML 2026 </h2>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ ABSTRACT ══════════════════════════ -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-4">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Can a diffusion model trained on bedrooms recover human faces? We investigate whether
+              diffusion models trained on mismatched or otherwise degraded data — <em>weak priors</em> —
+              can still be effective for solving inverse problems.
+            </p>
+            <p>
+              Surprisingly, the answer is often <b>yes</b>: across Gaussian deblurring, random
+              inpainting, and super-resolution, we find that weak priors frequently perform nearly
+              as well as full-strength, in-domain baselines. We identify the key condition:
+              <b>weak priors succeed when measurements are highly informative</b> — for instance,
+              when many pixels are observed or the blurring kernel is mild.
+            </p>
+            <p>
+              To explain this, we develop theory grounded in Bayesian consistency: when the
+              measurement operator is sufficiently informative, the posterior concentrates near the
+              true signal regardless of prior quality, effectively <em>overwhelming</em> a
+              misspecified prior. Our results provide a principled account of when weak diffusion
+              priors can be trusted, and clarify the regimes — such as high-ratio inpainting or
+              aggressive super-resolution — where prior quality becomes critical.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ METHOD ════════════════════════════ -->
+  <section class="section method-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">Observation and Algorithm</h2>
+
+      <div class="diagram-wrap">
+        <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: nowrap;
+      ">
+
+          <!-- Left: wide image -->
+          <div style="text-align:center; width:60%;">
+            <img src="images/gmm_diagram.png" alt="Wide diagram" style="
+              width:100%;
+              max-width:600px;
+              height:auto;
+              object-fit:contain;
+            " />
+
+            <p class="diagram-caption">
+              <b>Figure 1.</b> Posterior concentrates around x⋆ as N grows.
+            </p>
+          </div>
+
+          <!-- Right: tall image -->
+          <div style="text-align:center; width:28%;">
+            <img src="images/diagram.jpg" alt="Tall diagram" style="
+              width:100%;
+              max-width:260px;
+              height:auto;
+              object-fit:contain;
+            " />
+
+            <p class="diagram-caption">
+              <b>Figure 2.</b> Optimization algorithm using 3-step & mismatch weak prior.
+            </p>
+          </div>
+
+        </div>
+      </div>
+      
+      <div class="content has-text-justified">
+      <!-- When the measurement operator is highly informative, the posterior concentrates near
+      the true signal even under a mismatched prior. As measurements become less informative
+      (e.g., high-ratio inpainting or aggressive super-resolution), the prior exerts greater
+      influence and domain mismatch becomes costly. -->
+      <p>
+      As the measurement operator becomes more informative, the posterior distribution concentrates around the
+      true signal (x*), even when the assumed prior is mismatched. With sufficient measurements (N=50), different priors
+      yield highly concentrated posteriors near the ground truth, whereas weaker measurements (N=10) produce broader
+      posteriors that remain more sensitive to the prior.
+      </p>
+      
+      <p>
+      To realize the prior-robust behavior predicted by our theory, we optimize the diffusion initial noise using
+      a stabilized optimization procedure together with an improved early-stopping criterion. We intentionally use weak
+      priors in two forms: (1) an in-distribution but low-quality prior, and (2) a significantly weaker
+      out-of-distribution prior, where the unconditional sample resembles only a coarse bedroom sketch. Despite the
+      severe mismatch, both optimization trajectories can rapidly adapt to the measurements and converge to visually similar
+      and accurate reconstructions. As shown in the cover image, intermediate reconstructions at optimization iterations
+      1, 5, 10, 100, and 1000 demonstrate the progressive correction of the weak priors toward the final solution.
+      </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ VISUALIZATION ════════════════════ -->
+  <section class="section visualization-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">Results</h2>
+
+      <!-- ── Gaussian Deblurring ── -->
+      <div class="viz-subsection">
+        <h3 class="title is-5">Gaussian Deblurring</h3>
+        <p class="subtitle is-6">
+          Reconstructions on LSUN Bedroom, LSUN Church, and CelebA-HQ using a weak (mismatched-domain) prior.
+          Weak priors perform competitively with in-domain baselines in this high-information regime.
+        </p>
+        <div class="viz-carousel-outer">
+          <button class="viz-arrow viz-prev" aria-label="Previous">&#8249;</button>
+          <div class="viz-carousel-track" data-per-view="2">
+            <div class="viz-slide">
+              <img src="images/appendix_images/bedroom_g1.png" alt="LSUN Bedroom — Gaussian deblur example 1" />
+              <p class="viz-slide-label">LSUN Bedroom &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/bedroom_g2.png" alt="LSUN Bedroom — Gaussian deblur example 2" />
+              <p class="viz-slide-label">LSUN Bedroom &mdash; Ex. 2</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/church_g1.png" alt="LSUN Church — Gaussian deblur example 1" />
+              <p class="viz-slide-label">LSUN Church &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/church_g2.png" alt="LSUN Church — Gaussian deblur example 2" />
+              <p class="viz-slide-label">LSUN Church &mdash; Ex. 2</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/celeba_g1.png" alt="CelebA-HQ — Gaussian deblur example 1" />
+              <p class="viz-slide-label">CelebA-HQ &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/celeba_g2.png" alt="CelebA-HQ — Gaussian deblur example 2" />
+              <p class="viz-slide-label">CelebA-HQ &mdash; Ex. 2</p>
+            </div>
+          </div>
+          <button class="viz-arrow viz-next" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- ── Random Inpainting ── -->
+      <div class="viz-subsection">
+        <h3 class="title is-5">Random Inpainting</h3>
+        <p class="subtitle is-6">
+          When the observed pixel fraction is large, the weak prior is driven toward the correct
+          reconstruction across all three datasets.
+        </p>
+        <div class="viz-carousel-outer">
+          <button class="viz-arrow viz-prev" aria-label="Previous">&#8249;</button>
+          <div class="viz-carousel-track" data-per-view="2">
+            <div class="viz-slide">
+              <img src="images/appendix_images/bedroom_i1.png" alt="LSUN Bedroom — inpainting example 1" />
+              <p class="viz-slide-label">LSUN Bedroom &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/bedroom_i2.png" alt="LSUN Bedroom — inpainting example 2" />
+              <p class="viz-slide-label">LSUN Bedroom &mdash; Ex. 2</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/church_i1.png" alt="LSUN Church — inpainting example 1" />
+              <p class="viz-slide-label">LSUN Church &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/church_i2.png" alt="LSUN Church — inpainting example 2" />
+              <p class="viz-slide-label">LSUN Church &mdash; Ex. 2</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/celeba_i1.png" alt="CelebA-HQ — inpainting example 1" />
+              <p class="viz-slide-label">CelebA-HQ &mdash; Ex. 1</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/celeba_i2.png" alt="CelebA-HQ — inpainting example 2" />
+              <p class="viz-slide-label">CelebA-HQ &mdash; Ex. 2</p>
+            </div>
+          </div>
+          <button class="viz-arrow viz-next" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- ── Latent-Space Comparison ── -->
+      <div class="viz-subsection">
+        <h3 class="title is-5">Latent-Space Comparison</h3>
+        <p class="subtitle is-6">
+          Side-by-side comparison of our method (left) and DPS (right) operating in the latent space,
+          for Gaussian deblurring and inpainting. Scroll to view both tasks.
+        </p>
+        <div class="viz-carousel-outer">
+          <button class="viz-arrow viz-prev" aria-label="Previous">&#8249;</button>
+          <div class="viz-carousel-track" data-per-view="2">
+            <div class="viz-slide">
+              <img src="images/appendix_images/latent_gaussian.png" alt="Latent Gaussian deblur — Ours" />
+              <p class="viz-slide-label">Gaussian Deblur &mdash; Ours</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/latent_gaussian_dps.png" alt="Latent Gaussian deblur — DPS" />
+              <p class="viz-slide-label">Gaussian Deblur &mdash; DPS</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/latent_inpainting.png" alt="Latent inpainting — Ours" />
+              <p class="viz-slide-label">Inpainting &mdash; Ours</p>
+            </div>
+            <div class="viz-slide">
+              <img src="images/appendix_images/latent_inpainting_dps.png" alt="Latent inpainting — DPS" />
+              <p class="viz-slide-label">Inpainting &mdash; DPS</p>
+            </div>
+          </div>
+          <button class="viz-arrow viz-next" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- ── Failure Cases ── -->
+      <div class="viz-subsection">
+        <h3 class="title is-5">Failure Cases</h3>
+        <p class="subtitle is-6">
+          When measurements are insufficiently informative, the prior plays a larger role and
+          domain mismatch leads to visible degradation.
+        </p>
+        <div class="viz-carousel-track" data-per-view="3">
+          <div class="viz-slide">
+            <img src="images/appendix_images/failure.png" alt="Failure case — general" />
+            <p class="viz-slide-label">General</p>
+          </div>
+          <div class="viz-slide">
+            <img src="images/appendix_images/failure0.6.png" alt="Failure case — inpainting 60% mask" />
+            <p class="viz-slide-label">Inpainting (60% mask)</p>
+          </div>
+          <div class="viz-slide">
+            <img src="images/appendix_images/failure16.png" alt="Failure case — super-resolution 16×" />
+            <p class="viz-slide-label">Super-resolution 16&times;</p>
+          </div>
+        </div>
+        <p class="failure-note">
+          <b>Takeaway.</b> These cases are consistent with our theory: high-ratio inpainting
+          (60% pixels missing) and 16&times; super-resolution are low-information regimes
+          where the posterior no longer concentrates near the true signal, making prior quality
+          critical. In these settings, an in-domain prior should be preferred.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ BIBTEX ════════════════════════════ -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{jia2026weak,
+  title   = {Weak Diffusion Priors Can Still Achieve Strong Inverse-Problem Performance},
+  author  = {Jia, Jing and Yuan, Wei and Liu, Sifan and Shen, Liyue and Wang, Guanyang},
+  journal = {arXiv preprint arXiv:2601.22443},
+  year    = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ FOOTER ════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a
+              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+                Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              Website source code based on the
+              <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
